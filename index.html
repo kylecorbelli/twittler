@@ -23,12 +23,20 @@
             return months[date.getMonth()] + ' ' + date.getDate() + ' - ' + hours + ':' + date.getMinutes(); // TODO: sub minutes for date.getMinutes()
         };
 
+        // Helper function to make new tweets
+        var makeTweet = function(theTweet) {
+            var output = $('<div></div>');
+            output.html('<p><span class="heavy">' + theTweet.user + '</span> <span class="subtle">@' + theTweet.user + ' | ' + formatDateTime(theTweet.created_at) + '</span><br>' + theTweet.message + '</p>');
+            return output;
+        };
+
         var streamLength = streams.home.length;
         var index = streamLength - 1;
+        var tweet;
+        var $tweet;
         while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.html('<p><span class="heavy">' + tweet.user + '</span> <span class="subtle">@' + tweet.user + ' | ' + formatDateTime(tweet.created_at) + '</span><br>' + tweet.message + '</p>');
+          tweet = streams.home[index];
+          $tweet = makeTweet(tweet);
           $tweet.appendTo($body);
           index -= 1;
         }
@@ -38,8 +46,7 @@
             if (streams.home.length > streamLength) {
                 for (var i = streamLength; i < streams.home.length; i++) {
                     tweet = streams.home[i];
-                    $tweet = $('<div></div>');
-                    $tweet.html('<p><span class="heavy">' + tweet.user + '</span> <span class="subtle">@' + tweet.user + ' | ' + formatDateTime(tweet.created_at) + '</span><br>' + tweet.message + '</p>');
+                    $tweet = makeTweet(tweet);
                     $tweet.prependTo($body);
                 }
                 streamLength = streams.home.length;
