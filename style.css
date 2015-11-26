@@ -1,6 +1,11 @@
-.heavy {
+.user {
     font-weight: bold;
     font-size: 1.2em;
+    cursor: pointer;
+}
+
+.user:hover {
+    color: red; /* Change the color to match the eventual color palette */
 }
 
 .subtle {
