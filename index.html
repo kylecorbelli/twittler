@@ -12,11 +12,22 @@
         var $body = $('body');
         $body.html('');
 
+        // Helper function to format date
+        var formatDateTime = function(date) {
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            var hours = (date.getHours() > 12) ? date.getHours() - 12 : date.getHours();
+            var minutes = date.getMinutes().toString();
+            while (minutes.length < 2) {
+                minutes = '0' + minutes;
+            }
+            return months[date.getMonth()] + ' ' + date.getDate() + ' - ' + hours + ':' + date.getMinutes();
+        };
+
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.html('<p><span class="user">' + tweet.user + '</span><br>' + tweet.message + '</p>');
+          $tweet.html('<p><span class="heavy">' + tweet.user + '</span> <span class="subtle">@' + tweet.user + ' | ' + formatDateTime(tweet.created_at) + '</span><br>' + tweet.message + '</p>');
           $tweet.appendTo($body);
           index -= 1;
         }
