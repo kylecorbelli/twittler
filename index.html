@@ -20,10 +20,11 @@
             while (minutes.length < 2) {
                 minutes = '0' + minutes;
             }
-            return months[date.getMonth()] + ' ' + date.getDate() + ' - ' + hours + ':' + date.getMinutes();
+            return months[date.getMonth()] + ' ' + date.getDate() + ' - ' + hours + ':' + date.getMinutes(); // TODO: sub minutes for date.getMinutes()
         };
 
-        var index = streams.home.length - 1;
+        var streamLength = streams.home.length;
+        var index = streamLength - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
@@ -31,6 +32,19 @@
           $tweet.appendTo($body);
           index -= 1;
         }
+
+        // Add new tweets as they are created
+        setInterval(function() {
+            if (streams.home.length > streamLength) {
+                for (var i = streamLength; i < streams.home.length; i++) {
+                    tweet = streams.home[i];
+                    $tweet = $('<div></div>');
+                    $tweet.html('<p><span class="heavy">' + tweet.user + '</span> <span class="subtle">@' + tweet.user + ' | ' + formatDateTime(tweet.created_at) + '</span><br>' + tweet.message + '</p>');
+                    $tweet.prependTo($body);
+                }
+                streamLength = streams.home.length;
+            }
+        }, 100);
 
       });
 
