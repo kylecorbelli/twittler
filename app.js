@@ -18,7 +18,7 @@ $(document).ready(function(){ // TODO: Factor this out into a seperate JS file
 
     // Helper function to make new tweets
     var makeTweet = function(theTweet) {
-        var output = $('<div data-user="' + theTweet.user + '"></div>');
+        var output = $('<div class="tweet" data-user="' + theTweet.user + '"></div>');
         output.html('<p><span class="user">' + theTweet.user + '</span> <span class="subtle">@' + theTweet.user + ' | ' + formatDateTime(theTweet.created_at) + '</span><br>' + theTweet.message + '</p>');
             if (showUser !== '_all' && theTweet.user !== showUser) {
                 output.hide();

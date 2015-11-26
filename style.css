@@ -1,14 +1,30 @@
+body {
+    font-family: Calibri, arial, sans-serif;
+    background-color: #0097e8;
+    color: white;
+    font-size: 18px;
+}
+
 .user {
     font-weight: bold;
-    font-size: 1.2em;
     cursor: pointer;
+    font-size: 1.1em;
 }
 
 .user:hover {
-    color: red; /* Change the color to match the eventual color palette */
+    color: #003957; /* Change the color to match the eventual color palette */
 }
 
 .subtle {
     font-size: 0.8em;
-    color: gray;
+    color: #d4c158;
+}
+
+.tweet {
+
+    margin-bottom: 0;
+    padding: 10px;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-bottom: 1px solid white;
 }
