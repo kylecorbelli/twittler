@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="./style.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
   </head>
@@ -15,7 +16,7 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $tweet.html('<p><span class="user">' + tweet.user + '</span><br>' + tweet.message + '</p>');
           $tweet.appendTo($body);
           index -= 1;
         }
