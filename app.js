@@ -1,6 +1,6 @@
 $(document).ready(function(){ // TODO: Factor this out into a seperate JS file
-    var $body = $('body');
-    $body.html('');
+    var $section = $('.main-section');
+    $section.html('');
 
     // TODO: Add a main button that will allow the user to see all tweets from all users
 
@@ -34,7 +34,7 @@ $(document).ready(function(){ // TODO: Factor this out into a seperate JS file
     while(index >= 0){
       tweet = streams.home[index];
       $tweet = makeTweet(tweet);
-      $tweet.appendTo($body);
+      $tweet.appendTo($section);
       index -= 1;
     }
 
@@ -45,7 +45,7 @@ $(document).ready(function(){ // TODO: Factor this out into a seperate JS file
         $('.user').on('click', function() {
             showUser = $(this).closest('div').data('user');
             console.log(showUser);
-            $body.find('div').not('[data-user="' + showUser + '"]').hide();
+            $section.find('div').not('[data-user="' + showUser + '"]').hide();
         });
     };
 
@@ -57,7 +57,7 @@ $(document).ready(function(){ // TODO: Factor this out into a seperate JS file
             for (var i = streamLength; i < streams.home.length; i++) {
                 tweet = streams.home[i];
                 $tweet = makeTweet(tweet);
-                $tweet.prependTo($body);
+                $tweet.prependTo($section);
             }
             streamLength = streams.home.length;
             setEventListeners();
