@@ -8,9 +8,11 @@
   <body>
     <script>
 
-      $(document).ready(function(){
+      $(document).ready(function(){ // TODO: Factor this out into a seperate JS file
         var $body = $('body');
         $body.html('');
+
+        // TODO: Add a main button that will allow the user to see all tweets from all users
 
         // Helper function to format date
         var formatDateTime = function(date) {
@@ -25,8 +27,11 @@
 
         // Helper function to make new tweets
         var makeTweet = function(theTweet) {
-            var output = $('<div></div>');
-            output.html('<p><span class="heavy">' + theTweet.user + '</span> <span class="subtle">@' + theTweet.user + ' | ' + formatDateTime(theTweet.created_at) + '</span><br>' + theTweet.message + '</p>');
+            var output = $('<div data-user="' + theTweet.user + '"></div>');
+            output.html('<p><span class="user">' + theTweet.user + '</span> <span class="subtle">@' + theTweet.user + ' | ' + formatDateTime(theTweet.created_at) + '</span><br>' + theTweet.message + '</p>');
+                if (showUser !== '_all' && tweet.user !== showUser) {
+                    output.hide();
+                }
             return output;
         };
 
@@ -34,12 +39,26 @@
         var index = streamLength - 1;
         var tweet;
         var $tweet;
+        var showUser = '_all';
         while(index >= 0){
           tweet = streams.home[index];
           $tweet = makeTweet(tweet);
           $tweet.appendTo($body);
           index -= 1;
         }
+
+        // Set event listeners
+        var setEventListeners = function() {
+            // Filter tweets by user upon clicking that particular user
+            $('.user').off('click');
+            $('.user').on('click', function() {
+                showUser = $(this).closest('div').data('user');
+                console.log(showUser);
+                $body.find('div').not('[data-user="' + showUser + '"]').hide();
+            });
+        };
+
+        setEventListeners();
 
         // Add new tweets as they are created
         setInterval(function() {
@@ -50,6 +69,7 @@
                     $tweet.prependTo($body);
                 }
                 streamLength = streams.home.length;
+                setEventListeners();
             }
         }, 100);
 
