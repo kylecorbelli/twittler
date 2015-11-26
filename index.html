@@ -18,18 +18,19 @@
         var formatDateTime = function(date) {
             var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             var hours = (date.getHours() > 12) ? date.getHours() - 12 : date.getHours();
+            var amPm = (date.getHours() > 12) ? 'PM' : 'AM';
             var minutes = date.getMinutes().toString();
             while (minutes.length < 2) {
                 minutes = '0' + minutes;
             }
-            return months[date.getMonth()] + ' ' + date.getDate() + ' - ' + hours + ':' + date.getMinutes(); // TODO: sub minutes for date.getMinutes()
+            return months[date.getMonth()] + ' ' + date.getDate() + ' - ' + hours + ':' + minutes + ' ' + amPm;
         };
 
         // Helper function to make new tweets
         var makeTweet = function(theTweet) {
             var output = $('<div data-user="' + theTweet.user + '"></div>');
             output.html('<p><span class="user">' + theTweet.user + '</span> <span class="subtle">@' + theTweet.user + ' | ' + formatDateTime(theTweet.created_at) + '</span><br>' + theTweet.message + '</p>');
-                if (showUser !== '_all' && tweet.user !== showUser) {
+                if (showUser !== '_all' && theTweet.user !== showUser) {
                     output.hide();
                 }
             return output;
