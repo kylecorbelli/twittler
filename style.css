@@ -1,4 +1,9 @@
-.user {
+.heavy {
     font-weight: bold;
     font-size: 1.2em;
+}
+
+.subtle {
+    font-size: 0.8em;
+    color: gray;
 }
