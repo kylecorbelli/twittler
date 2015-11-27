@@ -56,7 +56,7 @@ $(document).ready(function(){
 
     setEventListeners();
 
-    Add new tweets as they are created
+    // Add new tweets as they are created
     setInterval(function() {
         if (streams.home.length > streamLength) {
             for (var i = streamLength; i < streams.home.length; i++) {
