@@ -1,7 +1,7 @@
 body {
     font-family: Calibri, arial, sans-serif;
     font-size: 18px;
-    background-color: #e7faff;
+    background-color: #f5fdff;
 }
 
 nav {
@@ -10,10 +10,10 @@ nav {
     right: 0;
     left: 0;
     margin: 0;
-    height: 50px;
+    height: 55px;
     background-color: #003957;
     padding: 5px;
-    border-bottom: 5px solid #0097e8;
+    /*border-bottom: 5px solid #0097e8;*/
 }
 
 .wrapper {
@@ -60,8 +60,8 @@ aside {
 }
 
 .logo:hover {
-    background-image: url('./palm-gold.png');
-    color: #d4c158;
+    background-image: url('./palm-blue.png');
+    color: #0097e8;
 }
 
 .first-letter {
@@ -77,11 +77,12 @@ aside {
 
 .user:hover {
     color: #0097e8;
+    text-decoration: underline;
 }
 
 .subtle {
     font-size: 0.8em;
-    color: #d4c158;
+    color: #0097e8;
 }
 
 .tweet {
@@ -123,7 +124,7 @@ Columns
 @media screen and (max-width: 768px) {
     aside.col-1-4 {
         width: 100%;
-        background-color: #e7faff;
+        background-color: #f5fdff;
         padding-bottom: 30px;
     }
 
