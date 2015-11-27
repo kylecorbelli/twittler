@@ -1,8 +1,6 @@
-$(document).ready(function(){ // TODO: Factor this out into a seperate JS file
+$(document).ready(function(){
     var $section = $('.main-section');
     $section.html('');
-
-    // TODO: Add a main button that will allow the user to see all tweets from all users
 
     // Helper function to format date
     var formatDateTime = function(date) {
@@ -44,8 +42,15 @@ $(document).ready(function(){ // TODO: Factor this out into a seperate JS file
         $('.user').off('click');
         $('.user').on('click', function() {
             showUser = $(this).closest('div').data('user');
-            console.log(showUser);
             $section.find('div').not('[data-user="' + showUser + '"]').hide();
+            $('#view').text(showUser);
+        });
+
+        // Shows all tweets by all users
+        $('.logo').on('click', function() {
+            showUser = '_all';
+            $section.find('div').show();
+            $('#view').text('Home');
         });
     };
 
