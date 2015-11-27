@@ -33,6 +33,11 @@ aside {
     font-size: 1.1em;
     text-align: center;
     padding-top: 10px;
+    padding-bottom: 15px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 1px solid #003957;
 }
 
 .logo {
