@@ -1,6 +1,7 @@
 body {
     font-family: Calibri, arial, sans-serif;
     font-size: 18px;
+    background-color: #e7faff;
 }
 
 nav {
@@ -16,15 +17,19 @@ nav {
 }
 
 .wrapper {
-    margin-top: 55px;
+    margin-top: 75px;
 }
 
 .main-section {
+    background-color: white;
     margin-left: 25%;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
 }
 
 aside {
     position: fixed;
+    height: 80px;
 }
 
 #view {
@@ -37,7 +42,7 @@ aside {
     width: 75%;
     margin-left: auto;
     margin-right: auto;
-    border-bottom: 1px solid #003957;
+    border-bottom: 1px solid #e2e2e2;
 }
 
 .logo {
@@ -82,8 +87,7 @@ aside {
 .tweet {
     margin-bottom: 0;
     padding: 10px;
-    border: 1px solid #e2e2e2;
-    border-top: none;
+    border-bottom: 1px solid #e2e2e2;
 }
 
 /*
@@ -114,4 +118,23 @@ Columns
     width: 50%;
     display: block;
     float: left;
+}
+
+@media screen and (max-width: 768px) {
+    aside.col-1-4 {
+        width: 100%;
+        background-color: #e7faff;
+        padding-bottom: 30px;
+    }
+
+    .wrapper {
+        margin-top: 65px;
+    }
+
+    .main-section {
+        width: 100%;
+        margin-top: 110px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
